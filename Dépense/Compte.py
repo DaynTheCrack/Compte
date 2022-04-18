@@ -5,7 +5,7 @@ import os
 from typing import Dict
 import matplotlib.pyplot as plt
 
-# mise à jour des var (mise à zéro)
+# mise à jour des vars (mise à zéro)
 DateTime = str(datetime.date.today()).split("-") # liste de la date du jour
 DateKeyYear = DateTime[0] # création de ma clée unique de l'année
 DateKeyMonth = DateTime[0] + "." + DateTime[1] # création de la clée unique du mois
