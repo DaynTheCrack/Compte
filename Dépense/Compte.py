@@ -112,3 +112,5 @@ var = read(dictionnaire) # on debug en affichant le résultat
 print(var.items())
 print(var)
 graph(read(dictionnaire))
+
+"""Faire un interface utilisateur et créer des clées avec les le thème des dépenses et/ou la personne qui vous doit de l'argent"""
