@@ -1,3 +1,4 @@
+"""Pensez à bien remettre le chemin d'accès relatif à 'DB.txt' """
 import os
 import pickle
 import datetime
