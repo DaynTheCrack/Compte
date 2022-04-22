@@ -3,7 +3,6 @@ import os
 import pickle
 import datetime
 import os
-from typing import Dict
 import matplotlib.pyplot as plt
 
 # mise à jour des vars (mise à zéro)
