@@ -5,7 +5,7 @@ import datetime
 import os
 import matplotlib.pyplot as plt
 
-# mise à jour des vars (mise à zéro)
+# mise à jour des var (mise à zéro)
 DateTime = str(datetime.date.today()).split("-") # liste de la date du jour
 DateKeyYear = DateTime[0] # création de ma clée unique de l'année
 DateKeyMonth = DateTime[0] + "." + DateTime[1] # création de la clée unique du mois
@@ -17,8 +17,45 @@ dictionnaire = {
     "day" : {},    
 } # créaction d'un dictionnaire vide avec année, mois et jour
 
+def grille(dictionnaire):
+
+    compteur = 0 # si c'est la première ligne
+    max = 0 # création de la var 
+
+    for key,element in dict(dictionnaire["day"]).items(): # definition du len max 
+        if len(key) > max:
+            max = len(key)
+        if len(str(element)) > max:
+            max = len(str(element))
+
+    for key,element in dict(dictionnaire["day"]).items():
+        
+        strelement = str(element)
+        Ligne = [] # liste de la ligne vide
+        longueurEsp = 3 # nombre d'espaces par default
+
+        if len(key) < max:
+            longueurEsp += (max - len(key) + 3) // 2 # nombre d'espaces en debut et en fin
+        Ligne.append(str("#"+longueurEsp*" "+key+longueurEsp*" "+"#"))
+
+        longueurEsp = 3
+
+        if len(strelement) < max:
+            longueurEsp += (max - len(key) + 3) // 2
+        Ligne.append(str(longueurEsp*" "+strelement+"€"+longueurEsp*" "+"#"))
+
+        ligne = len("".join(Ligne)) # longueur de la ligne 
+
+        if compteur == 0:
+            print(ligne*"#")
+        compteur += 1 # on ajoute 1 pour savoir si c'est la première ligne
+        print("".join(Ligne)) # grille
+        print(ligne*"#")
+
+    return "Tableau fini !"
+
 def transa(): # nombre de transactions
-    nbr_opera = (input("Combien de transactions avez vous efféctué ?"))
+    nbr_opera = (input("Combien de transactions avez vous efféctué (voir) ?"))
     nbr_opera = nbr_opera.replace(",",".")
     return float(nbr_opera)
 
@@ -103,7 +140,7 @@ def MainProg(fonc,dictionnaire): # Fonction principale du programme
     dictionnaire["month"][DateKeyMonth] += prix_total
     dictionnaire["day"][DateKeyDay] += prix_total
 
-    # renvoie le mois/l'année et le prix sur le mois
+    # renvoie la le mois/l'année et le prix sur le mois
     print("Tout est bon !")
     save(dictionnaire)
 MainProg(transa(),read(dictionnaire)) # on appelle les fonctions
@@ -111,5 +148,6 @@ var = read(dictionnaire) # on debug en affichant le résultat
 print(var.items())
 print(var)
 graph(read(dictionnaire))
+grille(read(dictionnaire))
 
 """Faire un interface utilisateur et créer des clées avec les le thème des dépenses et/ou la personne qui vous doit de l'argent"""
