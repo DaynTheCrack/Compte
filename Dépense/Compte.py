@@ -25,7 +25,7 @@ def grille(dictionnaire):
     for key,element in dict(dictionnaire["day"]).items(): # definition du len max 
         if len(key) > max:
             max = len(key)
-        if len(str(element)) > max:
+        if len(str(element)) > max: # element float to str
             max = len(str(element))
 
     for key,element in dict(dictionnaire["day"]).items():
